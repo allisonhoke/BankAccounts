@@ -10,13 +10,15 @@ module Bank
       @id = account_hash[:id]
       @balance = account_hash[:balance]
       @open_date = account_hash[:open_date]
+      @owner = {} #initializes with a hash with all values nil
 
       if @balance < 0
         raise ArgumentError.new("Cannot create an account with a negative balance.")
       end
-      # @id = rand(111111..999999)
-      # @balance = balance
-      #@owner = {} #initializes with a hash with all values nil
+    end
+
+    def create_owner(owner_hash)
+      @owner = Bank::Owner.new(owner_hash)
     end
 
     def self.all
@@ -40,11 +42,6 @@ module Bank
         end
       end
     end
-
-    #
-    # def create_owner(owner_hash)
-    #   @owner = Bank::Owner.new(owner_hash)
-    # end
 
     def withdraw(amount)
       if @balance - amount < 0
