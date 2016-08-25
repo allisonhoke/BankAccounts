@@ -45,9 +45,9 @@ end
 # puts c
 
 #TEST self.find method
-b = Bank::Owner.find(17)
-puts b
-puts b.id
-puts b.first_name
-puts b.last_name
-puts b.state
+# b = Bank::Owner.find(17)
+# puts b
+# puts b.id
+# puts b.first_name
+# puts b.last_name
+# puts b.state
