@@ -11,8 +11,9 @@ module Bank
       @balance = account_hash[:balance]
       @open_date = account_hash[:open_date]
       @owner = {} #initializes with a hash with all values nil
+      @minimum_balance = 0
 
-      if @balance < 0
+      if @balance < @minimum_balance
         raise ArgumentError.new("Cannot create an account with a negative balance.")
       end
     end
@@ -44,8 +45,8 @@ module Bank
     end
 
     def withdraw(amount)
-      if @balance - amount < 0
-        puts "Insufficient funds. Transaction cancelled."
+      if @balance - amount < @minimum_balance
+        puts "Insufficient funds: account cannot go below #{@minimum_balance}. Transaction cancelled."
         return @balance
       else
         return @balance -= amount
