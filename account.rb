@@ -5,7 +5,7 @@ module Bank
   class Account
   MINIMUM_BALANCE = 0
   attr_accessor :id, :balance, :open_date, :owner, :minimum_balance
-# review these attributes to determine which should be read v accessed
+# review these attributes to determine which should be read v accessed depending on interactions reuired
 
     def initialize(account_hash)
 
@@ -59,8 +59,10 @@ module Bank
       return @balance
     end
 
-#REVIEW WILL THIS METHOD EVER BE USEFUL to use in withdraw or initialize conditionals?
+#REVIEW - how can i make this better design!?!? 
+#WILL THIS METHOD BE USEFUL to use in withdraw or initialize conditionals?
 #could just use MINIMUM_BALANCE instead of threshold param EXCEPT when calling it in CheckingAccount withdraw_using_check bc min bal is different throughout that class
+#think about adding in transaction fees (possible constant?) - again with the withdraw_using_check
     # def enough?(threshold)
     #   @balance >= threshold
     # end
