@@ -19,14 +19,14 @@ module Bank
 end
 
 #TESTS
-a = Bank::SavingsAccount.new({:id => 1234, :balance => 10000, :open_date => "1994-11-17 14:04:56 -0800"})
-puts a
-puts a.withdraw(1000)
-puts a.add_interest(0.25)
-
-
-#TESTS for error
-b = Bank::SavingsAccount.new({:id => 1235, :balance => 900, :open_date => "1997-11-17 14:04:56 -0800"})
+# a = Bank::SavingsAccount.new({:id => 1234, :balance => 10000, :open_date => "1994-11-17 14:04:56 -0800"})
+# puts a
+# puts a.withdraw(1000)
+# puts a.add_interest(0.25)
+#
+#
+# #TESTS for error
+# b = Bank::SavingsAccount.new({:id => 1235, :balance => 900, :open_date => "1997-11-17 14:04:56 -0800"})
 
 
 
