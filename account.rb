@@ -3,7 +3,9 @@ require_relative 'owner'
 
 module Bank
   class Account
-    attr_accessor :id, :balance, :open_date
+  MINIMUM_BALANCE = 0
+  attr_accessor :id, :balance, :open_date, :owner, :minimum_balance
+# review these attributes to determine which should be read v accessed
 
     def initialize(account_hash)
 
@@ -11,10 +13,9 @@ module Bank
       @balance = account_hash[:balance]
       @open_date = account_hash[:open_date]
       @owner = {} #initializes with a hash with all values nil
-      @minimum_balance = 0
 
-      if @balance < @minimum_balance
-        raise ArgumentError.new("Cannot create an account with a negative balance.")
+      if @balance < self.class::MINIMUM_BALANCE
+        raise ArgumentError.new("Cannot create an account with less than #{self.class::MINIMUM_BALANCE}.")
       end
     end
 
@@ -45,8 +46,8 @@ module Bank
     end
 
     def withdraw(amount)
-      if @balance - amount < @minimum_balance
-        puts "Insufficient funds: account cannot go below #{@minimum_balance}. Transaction cancelled."
+      if @balance - amount < self.class::MINIMUM_BALANCE
+        puts "Insufficient funds: Account cannot go below #{self.class::MINIMUM_BALANCE}. Transaction cancelled."
         return @balance
       else
         return @balance -= amount
