@@ -2,15 +2,7 @@ require_relative 'account'
 
 module Bank
   class SavingsAccount < Account # inherit from Account class
-
-    def initialize(balance) # initialize with a balance
-      @balance = balance
-      @minimum_balance = 1000
-
-      if @balance < @minimum_balance #??CAN THIS BE SUPER(ed) WITHOUT HASH INPUT IN ACCOUNT MUCKING IT ALL UP?
-        raise ArgumentError.new("Cannot create an account with less than #{@minimum_balance}.")
-      end
-    end
+  MINIMUM_BALANCE = 1000
 
     def withdraw(amount)
       fee = 200 # each transaction incurs a fee of $2
@@ -25,3 +17,54 @@ module Bank
     end
   end
 end
+
+#Test
+a = Bank::SavingsAccount.new({:id => 1234, :balance => 10000, :open_date => "1994-11-17 14:04:56 -0800"})
+puts a
+puts a.withdraw(1000)
+puts a.add_interest(0.25)
+
+
+#test for error
+b = Bank::SavingsAccount.new({:id => 1235, :balance => 900, :open_date => "1997-11-17 14:04:56 -0800"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#     def self.all
+#       accounts = []
+#       CSV.read("savings.csv").each do |line|
+#         account = {} #create empty hash to store this CSV line's data
+#
+#         account[:id] = line[0].to_i
+#         account[:balance] = line[1].to_i
+#         account[:open_date] = line[2]
+#
+#         accounts << self.new(account) #create new instance with hash info
+#       end
+#       accounts #returns an array of object: Account instances
+#     end
+#
+# #THIS DOESN'T WORK
+#     def self.find(id)
+#       self.all.each do |o|
+#         if o.id == id
+#           return o #returns an object: Account
+#         end
+#       end
+#     end
