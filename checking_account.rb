@@ -37,7 +37,7 @@ module Bank
   end
 end
 
-#TEST that the check counter works re: fees and cancels transactions when withdraw_using_check is used beyond minimum balance of -10
+#TESTS that the check counter works re: fees and cancels transactions when withdraw_using_check is used beyond minimum balance of -10
 #ALSO TESTS whether regular withdraw method works when withdrawing too much
 
 # a = Bank::CheckingAccount.new({:id => 1234, :balance => 10000, :open_date => "1994-11-17 14:04:56 -0800"})

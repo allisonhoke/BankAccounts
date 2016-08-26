@@ -58,10 +58,16 @@ module Bank
       @balance += amount
       return @balance
     end
+
+#REVIEW WILL THIS METHOD EVER BE USEFUL to use in withdraw or initialize conditionals?
+#could just use MINIMUM_BALANCE instead of threshold param EXCEPT when calling it in CheckingAccount withdraw_using_check bc min bal is different throughout that class
+    # def enough?(threshold)
+    #   @balance >= threshold
+    # end
   end
 end
 
-#TEST self.all method
+#TESTS self.all method
 
 # my_accounts = Bank::Account.all
 # puts my_accounts
@@ -70,9 +76,12 @@ end
 #   puts a.balance
 # end
 
-#TEST self.find method
+#TESTS self.find method
 
 # b = Bank::Account.find(1213)
 # puts b
 # puts b.balance
 # puts b.open_date
+
+
+#FOR MONEY:  "$" + sprintf("%0.02f", total / 100)
